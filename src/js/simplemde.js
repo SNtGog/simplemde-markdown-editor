@@ -1,17 +1,5 @@
 /*global require,module*/
 "use strict";
-var CodeMirror = require("codemirror");
-require("codemirror/addon/edit/continuelist.js");
-require("./codemirror/tablist");
-require("codemirror/addon/display/fullscreen.js");
-require("codemirror/mode/markdown/markdown.js");
-require("codemirror/addon/mode/overlay.js");
-require("codemirror/addon/display/placeholder.js");
-require("codemirror/mode/gfm/gfm.js");
-require("codemirror/mode/xml/xml.js");
-require("spell-checker");
-var marked = require("marked");
-
 
 // Some variables
 var isMac = /Mac/.test(navigator.platform);
@@ -1672,9 +1660,7 @@ SimpleMDE.prototype.createToolbar = function(items) {
 			var nonSeparatorIconsFollow = false;
 
 			for(var x = (i + 1); x < items.length; x++) {
-				console.log(x);
 				if(items[x] !== "|" && (!self.options.hideIcons || self.options.hideIcons.indexOf(items[x].name) == -1)) {
-					console.log(items[x]);
 					nonSeparatorIconsFollow = true;
 				}
 			}
@@ -2002,4 +1988,3 @@ SimpleMDE.prototype.toTextArea = function() {
 	}
 };
 
-module.exports = SimpleMDE;
