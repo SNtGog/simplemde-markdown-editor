@@ -1245,7 +1245,7 @@ var blockStyles = {
 /**
  * Interface of SimpleMDE.
  */
-function SimpleMDE(options) {
+var SimpleMDE = window.SimpleMDE = function (options) {
 	// Handle options parameter
 	options = options || {};
 
