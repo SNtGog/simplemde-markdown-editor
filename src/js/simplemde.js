@@ -1245,7 +1245,7 @@ var blockStyles = {
 /**
  * Interface of SimpleMDE.
  */
-var SimpleMDE = window.SimpleMDE = function (options) {
+function SimpleMDE(options) {
 	// Handle options parameter
 	options = options || {};
 
@@ -1988,3 +1988,6 @@ SimpleMDE.prototype.toTextArea = function() {
 	}
 };
 
+(function() {
+  window.SimpleMDE = SimpleMDE;
+}());
