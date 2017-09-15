@@ -715,7 +715,7 @@ function toggleSideBySide(editor) {
 
 	var sideBySideRenderingFunction = function() {
 		preview.innerHTML = editor.options.previewRender(editor.value(), preview);
-		editor.trigger('preview-changed', editor, preview);
+		editor.options.onPreviewChanged(editor, preview);
 	};
 
 	if(!cm.sideBySideRenderingFunction) {
@@ -723,8 +723,8 @@ function toggleSideBySide(editor) {
 	}
 
 	if(useSideBySideListener) {
-	    editor.trigger('preview-changed', editor, preview);
 		preview.innerHTML = editor.options.previewRender(editor.value(), preview);
+		editor.options.onPreviewChanged(editor, preview);
 		cm.on("update", cm.sideBySideRenderingFunction);
 	} else {
 		cm.off("update", cm.sideBySideRenderingFunction);
@@ -770,7 +770,7 @@ function togglePreview(editor) {
 		}
 	}
 	preview.innerHTML = editor.options.previewRender(editor.value(), preview);
-    editor.trigger('preview-changed', editor, preview);
+    editor.options.onPreviewChanged(editor, preview);
 
 	// Turn off side by side if needed
 	var sidebyside = cm.getWrapperElement().nextSibling;
@@ -1330,6 +1330,10 @@ function SimpleMDE(options) {
 			// Note: "this" refers to the options object
 			return this.parent.markdown(plainText);
 		};
+	}
+
+	if !(options.onPreviewChanged) {
+	  options.onPreviewChanged = function() {};
 	}
 
 
