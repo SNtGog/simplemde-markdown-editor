@@ -1332,7 +1332,7 @@ function SimpleMDE(options) {
 		};
 	}
 
-	if !(options.onPreviewChanged) {
+	if (!options.onPreviewChanged) {
 	  options.onPreviewChanged = function() {};
 	}
 
