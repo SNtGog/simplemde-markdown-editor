@@ -715,6 +715,7 @@ function toggleSideBySide(editor) {
 
 	var sideBySideRenderingFunction = function() {
 		preview.innerHTML = editor.options.previewRender(editor.value(), preview);
+		editor.trigger('preview-changed', editor, preview);
 	};
 
 	if(!cm.sideBySideRenderingFunction) {
@@ -722,6 +723,7 @@ function toggleSideBySide(editor) {
 	}
 
 	if(useSideBySideListener) {
+	    editor.trigger('preview-changed', editor, preview);
 		preview.innerHTML = editor.options.previewRender(editor.value(), preview);
 		cm.on("update", cm.sideBySideRenderingFunction);
 	} else {
@@ -768,6 +770,7 @@ function togglePreview(editor) {
 		}
 	}
 	preview.innerHTML = editor.options.previewRender(editor.value(), preview);
+    editor.trigger('preview-changed', editor, preview);
 
 	// Turn off side by side if needed
 	var sidebyside = cm.getWrapperElement().nextSibling;
